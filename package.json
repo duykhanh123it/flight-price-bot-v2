@@ -1,0 +1,30 @@
+{
+  "name": "flight-price-bot",
+  "version": "1.0.0",
+  "description": "Flight Price Tracker Bot (Google Flights, Skyscanner, Trip.com) + Zalo Bot",
+  "main": "src/index.js",
+  "type": "module",
+  "engines": {
+  "node": ">=20"
+},
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node src/index.js",
+    "install-browsers": "playwright install chromium"
+  },
+  "keywords": [
+    "flight",
+    "skyscanner",
+    "google-flights",
+    "trip",
+    "playwright",
+    "zalo"
+  ],
+  "author": "duykhanh123it",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "playwright": "^1.54.2"
+  }
+}
