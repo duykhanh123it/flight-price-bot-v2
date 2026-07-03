@@ -1,0 +1,38 @@
+name: Flight Price Checker
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # 06:00 Việt Nam (UTC+7) = 23:00 UTC ngày hôm trước
+    - cron: "0 23 * * *"
+
+    # 21:00 Việt Nam (UTC+7) = 14:00 UTC
+    - cron: "0 14 * * *"
+
+jobs:
+  check-flight:
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium
+
+      - name: Run flight bot
+        env:
+          TZ: Asia/Ho_Chi_Minh
+        run: node src/index.js
